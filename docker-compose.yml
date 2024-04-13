@@ -1,0 +1,14 @@
+version: '3'
+services:
+  nodejs_app:
+    build: .
+    ports:
+      - "9000:9000"
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx.dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - nodejs_app
